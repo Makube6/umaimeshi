@@ -1,0 +1,237 @@
+/* components.css — 記事・固定ページ・今週の開催ウィジェット・導線モジュールのバッジ・イベント・口コミ・ステップ・宿泊
+ * style.css(T22「場内新聞・馬券」)のトークンと class を前提にした補助ルール。cta.css / cta.js の骨格は触らない。
+ */
+
+/* ===== 導線モジュール(cta.js v2): バッジ・PR 表記・promo 別の色 ===== */
+.kg-cta__badge {
+  display: inline-block; vertical-align: middle;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1;
+  padding: 4px 8px; margin-right: 4px;
+  background: var(--c-shu, #c62828); color: #fff;
+}
+.kg-cta__badge--pr { background: var(--c-gray, #6b6f78); color: #fff; }
+.kg-cta--hero .kg-cta__badge { background: #f2c40f; color: var(--c-ink, #1b1d22); }
+.kg-cta--hero .kg-cta__badge--pr { background: rgba(255, 255, 255, 0.9); color: #3f4a52; }
+.kg-cta--sticky .kg-cta__badge { background: #f2c40f; color: var(--c-ink, #1b1d22); }
+.kg-cta--inline.kg-cta--note { border-left-color: var(--c-ink, #1b1d22); }
+.kg-cta--inline.kg-cta--stay { border-left-color: #1f5fd0; }
+.kg-cta--inline + .kg-cta--inline { margin-top: -12px; }
+.kg-cta--inline .kg-cta__eyebrow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+
+/* ===== 記事一覧カード ===== */
+.article-card .meta { gap: 6px 10px; }
+.article-card .article-date { margin-left: auto; white-space: nowrap; }
+.article-card h3 { font-size: 1.12rem; }
+
+/* ===== 記事ページ ===== */
+.section--article { padding-top: 40px; }
+.article-head .breadcrumb { margin-bottom: 14px; }
+.article-lead { color: var(--c-ink-2, #51555e); font-size: 0.98rem; line-height: 1.8; margin: 0 0 14px; }
+.article-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.article-head [data-share] .kg-share { margin: 10px 0 0; }
+.article-body > :first-child { margin-top: 0; }
+.article-body table { display: block; overflow-x: auto; }
+.article-body table tr:first-child th { white-space: nowrap; }
+.article-sources h2 {
+  font-family: var(--font-body, sans-serif); font-size: 1rem; color: var(--c-ink, #1b1d22); margin: 0 0 10px; padding: 0; border: 0;
+}
+.article-sources h2::after { display: none; }
+.article-sources ul { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 4px; }
+.article-sources li { padding-left: 1.2em; position: relative; line-height: 1.7; }
+.article-sources li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; background: var(--c-shu, #c62828); }
+.article-sources a { color: var(--c-ink, #1b1d22); text-underline-offset: 3px; }
+.article-sources__note { margin: 0 0 6px; }
+.article-sources [data-share] .kg-share { margin: 14px 0 0; }
+
+/* ===== 固定ページ ===== */
+.page-body { padding-top: 8px; }
+.page-body h2:first-child { margin-top: 0; }
+.page-body strong { font-weight: 700; }
+
+/* ===== 今週の開催ウィジェット(.kg-calendar の骨格は style.css。ここは追加要素のみ) ===== */
+.kg-calendar--weekly { margin: 32px 0 0; }
+.page-head .kg-calendar { margin: 20px 0 0; }
+.page-head .kg-calendar p { max-width: none; }
+.kg-calendar__note { color: var(--c-ink-2, #51555e); font-size: 0.88rem; margin: 0 0 10px; }
+.kg-calendar__courses { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px; }
+.kg-calendar__course { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--c-rule, #d8d0bf); }
+.kg-calendar__course:hover { color: var(--c-shu, #c62828); text-decoration-color: currentColor; }
+.kg-calendar__sep { color: var(--c-ink-2, #51555e); }
+.kg-calendar__meeting { color: var(--c-ink-2, #51555e); font-size: 0.88rem; }
+.kg-calendar__today {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; line-height: 1; vertical-align: middle; letter-spacing: 0.08em;
+  color: #fff; background: var(--c-shu, #c62828); padding: 4px 7px; margin-left: 6px; font-family: var(--font-body, sans-serif);
+}
+.kg-calendar__tentative { color: var(--c-ink-2, #51555e); font-size: 0.8rem; }
+.kg-calendar__next {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+  margin: 14px 0 0; padding: 10px 12px;
+  background: var(--c-warn-soft, #fff1c2); border: 1px solid #d9b94a; font-size: 0.95rem;
+}
+.kg-calendar__next-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; line-height: 1;
+  color: #fff; background: var(--c-ink, #1b1d22); padding: 4px 8px;
+}
+.kg-calendar__race { font-weight: 700; font-family: var(--font-head, serif); }
+.kg-calendar__source { color: var(--c-ink-2, #51555e); font-size: 0.78rem; margin: 12px 0 0; }
+.kg-calendar__source a { text-decoration: underline; text-underline-offset: 3px; }
+.kg-calendar [data-cta] .kg-cta--inline { margin: 14px 0 0; }
+.kg-calendar [data-cta][hidden] { display: none; }
+
+@media (max-width: 520px) {
+  .kg-calendar { padding: 16px 16px; }
+  .kg-calendar__date { min-width: 100%; }
+  .article-card .article-date { margin-left: 0; }
+}
+
+/* ===== イベント(番組表の行): カード markup は不変、見た目は「日付欄 | 内容」の罫線行 ===== */
+.grid--events { grid-template-columns: 1fr; gap: 0; border-top: 2px solid var(--c-ink, #1b1d22); }
+.event-card { border: 0; border-bottom: 1px solid var(--c-rule, #d8d0bf); box-shadow: none; background: transparent; }
+.event-card:hover { transform: none; box-shadow: none; background: var(--c-card, #fffdf9); }
+.event-card .card-body {
+  display: grid; grid-template-columns: 7.5em minmax(0, 1fr); column-gap: 20px; row-gap: 2px;
+  grid-template-areas: "when meta" "when title" "when desc" "when foot";
+  padding: 16px 8px 16px 0;
+}
+.event-card .meta { grid-area: meta; }
+.event-card h3 { grid-area: title; font-size: 1.12rem; margin: 4px 0 2px; transition: color 0.15s; }
+.event-card:hover h3 { color: var(--c-shu, #c62828); }
+.event-when {
+  grid-area: when; margin: 0; align-self: start;
+  font-family: var(--font-head, serif); font-weight: 800; font-size: 1.05rem; line-height: 1.4;
+  color: var(--c-ink, #1b1d22); font-variant-numeric: tabular-nums;
+  border-right: 1px solid var(--c-ink, #1b1d22); padding: 2px 12px 2px 0; min-height: 100%;
+}
+.event-card .desc { grid-area: desc; margin: 0 0 6px; flex: 0 0 auto; }
+.event-card .card-foot { grid-area: foot; justify-content: flex-start; border-top: 0; padding-top: 0; margin-top: 0; font-size: 0.78rem; }
+.event-card .card-foot::before, .event-card .card-foot::after { display: none; }
+.event-status {
+  display: inline-flex; align-items: center;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1;
+  padding: 5px 8px; background: var(--c-paper-2, #efe8d8); color: var(--c-ink, #1b1d22); border: 1px solid var(--c-rule, #d8d0bf);
+}
+.event-status--ongoing { background: var(--c-shu, #c62828); color: #fff; border-color: var(--c-shu, #c62828); }
+.event-status--upcoming { background: var(--c-card, #fffdf9); color: var(--c-ink, #1b1d22); border-color: var(--c-ink, #1b1d22); }
+.event-status--ended { background: var(--c-gray, #6b6f78); color: #fff; border-color: var(--c-gray, #6b6f78); }
+[data-status="ended"] .event-when { color: var(--c-ink-2, #51555e); border-right-color: var(--c-rule, #d8d0bf); }
+.event-card[data-status="ended"] .card-body { opacity: 0.75; }
+/* トップ: 2 列の番組表 */
+@media (min-width: 821px) {
+  #top-events { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+}
+/* モバイルのトップ: 横スクロールの列(ページ幅は広げない) */
+@media (max-width: 520px) {
+  #top-events { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding: 4px 0 12px; border-top: 0; -webkit-overflow-scrolling: touch; }
+  #top-events .event-card { flex: 0 0 84%; scroll-snap-align: start; border: 1px solid var(--c-ink, #1b1d22); background: var(--c-card, #fffdf9); box-shadow: 3px 3px 0 var(--c-rule, #d8d0bf); }
+  #top-events .event-card .card-body { padding: 14px 14px; }
+  /* minmax(0, 1fr): 1fr の最小幅は中身(nowrap の .place)の幅になり、1 列グリッドごと card より広がる(T21 M1) */
+  .event-card .card-body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "meta" "when" "title" "desc" "foot"; }
+  .event-card .card-foot .place { white-space: normal; }
+  .event-when { border-right: 0; padding: 0; min-height: 0; font-size: 0.98rem; }
+}
+.chips--events { margin-bottom: 12px; }
+.chips--events + .chips--events { margin-bottom: 20px; }
+.chips--events .chip { font-size: 0.85rem; padding: 6px 14px; min-height: 40px; }
+.event-head { margin-bottom: 4px; }
+.event-head .badge { text-decoration: none; }
+.event-detail .section-title { font-size: 1.25rem; margin: 28px 0 14px; }
+.event-detail .section-title:first-child { margin-top: 0; }
+.event-dates { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.event-dates li {
+  padding: 8px 14px; background: var(--c-card, #fffdf9); border: 1px solid var(--c-ink, #1b1d22);
+  font-family: var(--font-head, serif); font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem;
+}
+.event-dates li time { font-weight: inherit; }
+.event-description, .event-conditions { max-width: 46em; line-height: 1.9; }
+.event-official { margin: 22px 0 0; }
+.event-official a {
+  display: inline-flex; align-items: center; min-height: var(--tap, 44px); padding: 0 18px;
+  border: 1px solid var(--c-ink, #1b1d22); background: var(--c-card, #fffdf9); color: var(--c-ink, #1b1d22); font-weight: 700; text-decoration: none;
+  box-shadow: 3px 3px 0 var(--c-rule, #d8d0bf); transition: background-color 0.15s, color 0.15s;
+}
+.event-official a:hover { background: var(--c-ink, #1b1d22); color: var(--c-paper, #f7f3ea); }
+.event-detail [data-cta] .kg-cta--inline { margin: 24px 0 0; }
+.event-detail .shop-verify { margin-top: 24px; }
+
+/* ===== 口コミ(店舗ページ。承認済みのみ) ===== */
+.reviews { margin: 36px 0 0; }
+.reviews__lead { color: var(--c-ink-2, #51555e); font-size: 0.88rem; margin: -14px 0 18px; }
+.review-list { display: grid; gap: 14px; }
+.review {
+  padding: 16px 18px; border: 1px solid var(--c-ink, #1b1d22); border-left: 8px solid var(--c-ink, #1b1d22);
+  background: var(--c-card, #fffdf9); box-shadow: 3px 3px 0 var(--c-rule, #d8d0bf);
+}
+.review__head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 8px; }
+.review__dish { font-family: var(--font-head, serif); font-weight: 800; font-size: 1.1rem; }
+.review__rating { color: var(--c-warn-text, #6b4a00); letter-spacing: 0.1em; font-size: 0.95rem; white-space: nowrap; }
+.review__body { margin: 0 0 8px; line-height: 1.85; }
+.review__meta { margin: 0; font-size: 0.8rem; color: var(--c-ink-2, #51555e); }
+.review__reply {
+  margin: 12px 0 0; padding: 10px 14px;
+  background: var(--c-paper-2, #efe8d8); border-left: 3px solid var(--c-shu, #c62828); font-size: 0.9rem;
+}
+.review__reply-label {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1;
+  padding: 4px 8px; background: var(--c-shu, #c62828); color: #fff; margin: 0 0 6px;
+}
+.review__reply-body { margin: 0; }
+.reviews__empty { padding: 20px 16px; }
+.review-form { margin: 16px 0 0; }
+.review-form__note { margin: 0; color: var(--c-ink-2, #51555e); font-size: 0.9rem; }
+.btn-review {
+  display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap, 44px); padding: 0 22px;
+  background: var(--c-ink, #1b1d22); color: var(--c-paper, #f7f3ea); font-weight: 700; text-decoration: none;
+  border: 1px solid var(--c-ink, #1b1d22); box-shadow: 3px 3px 0 var(--c-rule, #d8d0bf); transition: background-color 0.15s;
+}
+.btn-review:hover { background: var(--c-shu, #c62828); border-color: var(--c-shu, #c62828); }
+
+/* ===== はじめての方へ: 3 ステップ(丸数字) ===== */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.step {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px 20px; border: 1px solid var(--c-ink, #1b1d22);
+  background: var(--c-card, #fffdf9); box-shadow: 3px 3px 0 var(--c-rule, #d8d0bf);
+}
+.step__num {
+  flex-shrink: 0; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  font-family: var(--font-head, serif); font-weight: 800; font-size: 1.35rem; color: var(--c-paper, #f7f3ea);
+  background: var(--c-ink, #1b1d22); border: 2px solid var(--c-ink, #1b1d22); box-shadow: inset 0 0 0 2px var(--c-paper, #f7f3ea);
+}
+.step__body { min-width: 0; }
+.step__title { font-size: 1.2rem; margin: 6px 0 6px; }
+.step__body p { margin: 0; color: var(--c-ink, #1b1d22); line-height: 1.85; }
+.step__body a { color: var(--c-ink, #1b1d22); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--c-shu, #c62828); }
+@media (min-width: 821px) {
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .step { flex-direction: column; }
+}
+
+/* ===== 宿泊: 広告表記・競馬場ごとの一覧・PR バッジ ===== */
+.pr-notice {
+  margin: 12px 0 0; padding: 10px 14px;
+  background: var(--c-card, #fffdf9); border: 1px solid var(--c-rule, #d8d0bf); border-left: 4px solid var(--c-gray, #6b6f78);
+  font-size: 0.85rem; color: var(--c-ink-2, #51555e); max-width: 46em;
+}
+.stay-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.stay-jump .chip--link { display: inline-flex; align-items: center; gap: 4px; min-height: var(--tap, 44px); padding: 8px 16px; border: 1px solid var(--c-ink, #1b1d22); background: var(--c-card, #fffdf9); font-size: 0.88rem; font-weight: 500; }
+.stay-jump .chip--link:hover { background: var(--c-paper-2, #efe8d8); }
+.stay-course { margin: 0 0 40px; }
+.stay-course:last-of-type { margin-bottom: 0; }
+.stay-course__lead { color: var(--c-ink-2, #51555e); font-size: 0.92rem; margin: -10px 0 18px; }
+.stay-course__lead a { text-decoration: underline; text-underline-offset: 3px; }
+.grid--lodging { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.lodging-card { border-top: 6px solid #1f5fd0; }
+.lodging-card .desc { flex: 0 0 auto; }
+.lodging-notes { color: var(--c-ink-2, #51555e); font-size: 0.85rem; margin: 0 0 12px; }
+.lodging-links { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; }
+.lodging-links a {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px;
+  border: 1px solid var(--c-ink, #1b1d22); color: var(--c-ink, #1b1d22); background: var(--c-card, #fffdf9); font-weight: 700; font-size: 0.88rem;
+  text-decoration: none; transition: background-color 0.15s, color 0.15s;
+}
+.lodging-links a:hover { background: var(--c-ink, #1b1d22); color: var(--c-paper, #f7f3ea); }
+.lodging-links a.lodging-links__pr { border-color: var(--c-gray, #6b6f78); color: #3f4a52; }
+.lodging-links a.lodging-links__pr:hover { background: var(--c-gray, #6b6f78); color: #fff; }
+.badge--pr { background: var(--c-gray, #6b6f78); color: #fff; }
+.lodging-checked { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed var(--c-ink, #1b1d22); font-size: 0.78rem; color: var(--c-ink-2, #51555e); }
+.lodging-checked a { text-decoration: underline; text-underline-offset: 3px; }

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- ウマぃ飯 シンボル: 丼(墨)+ 白飯 + 馬(朱・たてがみ墨)。ヘッダーは layout.html にインライン、favicon.svg / icon-source.html / og-source.html / illust/hero.svg も同じ図形 -->
+  <path d="M6 37c4-6 14-9 26-9s22 3 26 9z" fill="#fffdf9"/>
+  <path d="M14 38v-2c1-8 4-16 10-22l-1-9 6 7 2-8 3 8c6 1 12 6 17 13 2 3 4 6 3 9-1 2-4 3-10 3z" fill="#c62828"/>
+  <path d="M24 14c-6 5-9 12-10 22h-4c0-12 4-20 12-26z" fill="#1b1d22"/>
+  <circle cx="40" cy="20" r="1.6" fill="#fffdf9"/>
+  <circle cx="53" cy="31" r="1.2" fill="#1b1d22"/>
+  <ellipse cx="32" cy="38" rx="26" ry="5" fill="#fffdf9"/>
+  <path d="M6 40h52c0 14-10 22-26 22S6 54 6 40z" fill="#1b1d22"/>
+  <path d="M6 40h52v3H6z" fill="#0d0e12"/>
+  <rect x="24" y="60" width="16" height="3" rx="1" fill="#0d0e12"/>
+</svg>

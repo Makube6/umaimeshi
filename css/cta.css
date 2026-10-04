@@ -1,0 +1,128 @@
+/* cta.css — 導線モジュール・シェアボタン(T3 → T22 で「場内新聞」の見た目に刷新)
+ * style.css のデザイントークンを使い、未定義でも崩れないようフォールバックを持つ。cta.js / share.js の markup は不変。
+ */
+
+/* ===== 共通 ===== */
+.kg-cta {
+  --kg-ink: var(--c-ink, #1b1d22);
+  --kg-ink-2: var(--c-ink-2, #51555e);
+  --kg-shu: var(--c-shu, #c62828);
+  --kg-paper: var(--c-paper, #f7f3ea);
+  --kg-paper-2: var(--c-paper-2, #efe8d8);
+  --kg-card: var(--c-card, #fffdf9);
+  --kg-rule: var(--c-rule, #d8d0bf);
+  --kg-max: var(--max, 1120px);
+  box-sizing: border-box;
+  line-height: 1.6;
+  color: var(--kg-ink);
+}
+.kg-cta *, .kg-cta *::before, .kg-cta *::after { box-sizing: border-box; }
+.kg-cta p { margin: 0; }
+
+.kg-cta__eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; }
+.kg-cta__title { font-family: var(--font-head, serif); font-size: 1.3rem; font-weight: 800; line-height: 1.4; margin-top: 2px; letter-spacing: 0.02em; }
+.kg-cta__sub { font-size: 0.92rem; margin-top: 6px; }
+.kg-cta__note { font-size: 0.75rem; margin-top: 8px; opacity: 0.85; }
+
+.kg-cta__btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap, 44px);
+  font: inherit; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em;
+  padding: 10px 24px; border: 1px solid var(--kg-ink);
+  background: var(--kg-ink); color: var(--kg-paper); text-decoration: none; white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--kg-rule);
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s, border-color 0.15s;
+}
+.kg-cta__btn:hover, .kg-cta__btn:focus-visible {
+  transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--kg-ink); background: var(--kg-shu); border-color: var(--kg-shu);
+}
+.kg-cta__btn:focus-visible { outline: 3px solid var(--kg-shu); outline-offset: 2px; }
+
+/* ===== hero: 一面の下に置く横長の帯(墨地) ===== */
+.kg-cta--hero { background: var(--kg-ink); color: var(--kg-paper); padding: 24px 24px; border: 1px solid var(--kg-ink); }
+.kg-cta--hero .kg-cta__inner {
+  max-width: var(--kg-max); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.kg-cta--hero .kg-cta__title { font-size: clamp(1.25rem, 2.6vw, 1.6rem); }
+.kg-cta--hero .kg-cta__eyebrow { color: #f2c40f; }
+.kg-cta--hero .kg-cta__action { flex-shrink: 0; }
+.kg-cta--hero .kg-cta__btn { background: var(--kg-paper); color: var(--kg-ink); border-color: var(--kg-paper); box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.25); }
+.kg-cta--hero .kg-cta__btn:hover { background: var(--kg-shu); color: #fff; border-color: var(--kg-shu); }
+
+/* ===== inline: 記事中の券 ===== */
+.kg-cta--inline {
+  display: flex; align-items: center; gap: 18px;
+  margin: 32px 0; padding: 20px 22px;
+  background: var(--kg-card); border: 1px solid var(--kg-ink); border-left: 8px solid var(--kg-shu);
+  box-shadow: 4px 4px 0 var(--kg-rule);
+}
+.kg-cta--inline .kg-cta__icon {
+  flex-shrink: 0; width: 56px; height: 56px; display: grid; place-items: center;
+  background: var(--kg-paper-2); border: 1px solid var(--kg-ink);
+}
+.kg-cta--inline .kg-cta__icon svg { width: 30px; height: 30px; fill: none; stroke: var(--kg-ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.kg-cta--inline .kg-cta__body { flex: 1; min-width: 0; }
+.kg-cta--inline .kg-cta__eyebrow { color: var(--kg-shu); }
+.kg-cta--inline .kg-cta__title { font-size: 1.15rem; }
+.kg-cta--inline .kg-cta__sub, .kg-cta--inline .kg-cta__note { color: var(--kg-ink-2); }
+.kg-cta--inline .kg-cta__action { flex-shrink: 0; }
+
+/* ===== sticky: モバイル固定バー(768px 以下のみ)。下部タブ(style.css の .nav)の上に乗せる ===== */
+.kg-cta--sticky { display: none; }
+
+@media (max-width: 768px) {
+  .kg-cta--sticky {
+    display: flex; align-items: center; gap: 10px;
+    position: fixed; left: 0; right: 0; z-index: 25;
+    bottom: calc(var(--tabbar-h, 60px) + env(safe-area-inset-bottom, 0px));
+    padding: 10px 44px 10px 14px;
+    background: var(--kg-ink); color: var(--kg-paper); border-top: 1px solid var(--kg-paper);
+    animation: kg-sticky-in 0.3s ease-out;
+  }
+  .kg-cta--sticky .kg-cta__body { flex: 1; min-width: 0; }
+  .kg-cta--sticky .kg-cta__title { font-family: inherit; font-size: 0.9rem; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .kg-cta--sticky .kg-cta__sub { font-size: 0.72rem; margin-top: 0; opacity: 0.8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .kg-cta--sticky .kg-cta__btn { font-size: 0.88rem; padding: 8px 14px; flex-shrink: 0; background: var(--kg-paper); color: var(--kg-ink); border-color: var(--kg-paper); box-shadow: none; }
+  .kg-cta__close {
+    position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+    width: 32px; height: 32px; border: 0; background: rgba(255, 255, 255, 0.15); color: #fff;
+    font: inherit; font-size: 1.2rem; line-height: 1; cursor: pointer;
+  }
+  .kg-cta__close:hover, .kg-cta__close:focus-visible { background: rgba(255, 255, 255, 0.3); }
+  /* 表示中は本文が隠れないよう余白を足す(cta.js が html に付与)。下部タブ分 + バー分 */
+  html.kg-sticky-open body { padding-bottom: calc(var(--tabbar-h, 60px) + env(safe-area-inset-bottom, 0px) + 76px); }
+
+  .kg-cta--hero .kg-cta__inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .kg-cta--inline { flex-wrap: wrap; }
+  .kg-cta--inline .kg-cta__action { width: 100%; }
+  .kg-cta--inline .kg-cta__btn { display: flex; width: 100%; }
+}
+
+@keyframes kg-sticky-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* ===== share: シェアボタン ===== */
+.kg-share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 20px 0; font-size: 0.9rem; color: var(--c-ink, #1b1d22); }
+.kg-share__label { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--c-ink-2, #51555e); margin-right: 4px; }
+.kg-share__btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px;
+  font: inherit; font-size: 0.85rem; font-weight: 700; padding: 6px 16px;
+  border: 1px solid var(--c-ink, #1b1d22); background: var(--c-card, #fffdf9); color: var(--c-ink, #1b1d22);
+  text-decoration: none; cursor: pointer; line-height: 1; border-radius: 0;
+  transition: background-color 0.15s, color 0.15s;
+}
+.kg-share__btn:hover, .kg-share__btn:focus-visible { background: var(--c-ink, #1b1d22); color: var(--c-paper, #f7f3ea); }
+.kg-share__btn--x { background: var(--c-ink, #1b1d22); color: var(--c-paper, #f7f3ea); }
+.kg-share__btn--x:hover { background: var(--c-shu, #c62828); border-color: var(--c-shu, #c62828); color: #fff; }
+.kg-share__btn--line::before { content: ""; width: 10px; height: 10px; background: #06c755; flex-shrink: 0; }
+.kg-share__toast { font-size: 0.8rem; color: var(--c-shu, #c62828); font-weight: 700; opacity: 0; transition: opacity 0.2s; }
+.kg-share__toast.is-visible { opacity: 1; }
+
+/* ===== アニメーションを抑制する設定を尊重 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .kg-cta--sticky { animation: none; }
+  .kg-cta__btn, .kg-share__btn, .kg-share__toast { transition: none; }
+  .kg-cta__btn:hover, .kg-share__btn:hover { transform: none; }
+}
